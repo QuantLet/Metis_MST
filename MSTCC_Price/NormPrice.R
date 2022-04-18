@@ -1,3 +1,5 @@
+# codes originate from Giudici P, et al. (2020). "Network Models to Enhance Automated Cryptocurrency Portfolio Management."
+
 rm(list = ls())
 
 library(PerformanceAnalytics)
