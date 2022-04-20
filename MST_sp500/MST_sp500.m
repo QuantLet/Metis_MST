@@ -1,22 +1,10 @@
-%% TiME SERIES by Kruskal
+%% load SP500 TiME SERIES 
 clc,clear
 load("sp500.mat");
-logret=sample(:,4);
-price=sample(:,5);
-timeline=datenum(sample(:,1:3));
-% %% plot data set
-% figure;
-% subplot(2,1,1);
-% plot(timeline,price);
-% dateaxis('x',12);
-% xlim([timeline(1),timeline(end)]);
-% set(gca,'color','none','ytick',[],'yticklabel',[]);
-% subplot(2,1,2);
-% plot(timeline,logret);
-% dateaxis('x',12);
-% xlim([timeline(1),timeline(end)]);
-% set(gca,'color','none','ytick',[],'yticklabel',[]);
-% saveas(gcf,'PriRet_SP','png');
+logret=sp500.Return;
+timeline=sp500.Time;
+price=sp500.IndexPrice;
+
 %% plot scatter price and return
 figure;
 subplot(2,1,1);
@@ -29,17 +17,20 @@ scatter(timeline,logret,0.3)
 dateaxis('x',12);
 xlim([timeline(1),timeline(end)]);
 set(gca,'color','none','ytick',0);
-% set(gca,'color','none','ytick',[0],'yticklabel',[]);
+
 %% save scatter price and return
 saveas(gcf,'PriceReturn_SP_scatter','png');
+
 %% plot scatter return
 figure;
 scatter(timeline,logret,0.3)
 dateaxis('x',12);
 xlim([timeline(1),timeline(end)]);
 set(gca,'color','none','ytick',[],'xticklabel',[],'XColor','none','YColor','none');
+
 %% save scatter return
 saveas(gcf,'Return_SP_scatter','png');
+
 %% generate minimal spanning tree
 DM=pdist2(logret,logret);
 for i=1:length(DM)-2
@@ -56,6 +47,7 @@ G=graph(DM);
 T=minspantree(G,'Method','sparse');
 P=[timeline,logret];
 T_Edges=sortrows(T.Edges,"Weight");
+
 %% plot png of SP500 MST
 figure;
 for i = 1:length(T_Edges.Weight)
@@ -65,12 +57,14 @@ end
 dateaxis('x',12);
 xlim([timeline(1),timeline(end)]);
 set(gca,'color','none','xticklabel',[],'XColor','none','YColor','none')
+
 %% save png of SP500 MST
 saveas(gcf,'MST_sp500','png');
+
 %% figure gif of SP500 return by Kruskal
 figure;
 ax=gca;
-ax.XColor='none';
+% ax.XColor='none';
 ax.YColor='none';
 hold(ax,'on')
 DelayTime=.001;
@@ -90,6 +84,7 @@ for i = 1:length(T_Edges.Weight)
 end
 pause(DelayTime);saveFrame(ax,DelayTime);
 
+%% used function
 function saveFrame(ax,DelayTime)
 F=getframe(ax);
 [imind,cm]=rgb2ind(F.cdata,256);
