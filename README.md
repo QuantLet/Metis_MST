@@ -1,4 +1,13 @@
 # Metis_MST
-This is repository of METIS about Minimum Spanning Tree
 
-Author: Zijin Wang
+Name of Quantlet: 'Metis_MST'
+
+Published in: 'Quantnar'
+
+Keyword: 'minimum spanning tree', 'Kurskal algorithm', 'Prim algorithm', 'clustering, time series', 'cryptocurrency'
+
+Author: 'Wolfgang K. Härdle, Rui REN, Zijin Wang'
+
+Submitted: '19. April 2022, Zijin Wang'
+
+Datafile: 'sp500.mat', 'price.csv', 'normprice.csv', 'crix_data.csv', 'rend100_crypto.csv'
