@@ -17,7 +17,5 @@ Datafile: 'sp500.mat', 'price.csv', 'normprice.csv', 'crix_data.csv', 'rend100_c
 
 Requirements
 ----
-R
- 
-matlab
+R, matlab
   
