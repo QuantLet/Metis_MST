@@ -11,7 +11,16 @@ Keywords:
 - 'Distance'
 
 Output:  
-- 'Sample_Obs.csv'
+- 'MST_8p_gen_1.png'
+- 'MST_8p_gen_2.png'
+- 'MST_8p_gen_3.png'
+- 'MST_8p_gen_4.png'
+- 'MST_8p_gen_5.png'
+- 'MST_8p_gen_6.png'
+- 'MST_8p_gen_7.png'
+- 'MST_8p_gen_8.png'
+- 'MST_8p_gen_9.png'
+- 'MST_8p_gen_10.png'
 
 Author: 
 - 'Zijin Wang'
