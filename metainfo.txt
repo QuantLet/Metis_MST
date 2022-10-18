@@ -1,0 +1,19 @@
+Name of Quantlet: 'Minimum Spanning Tree'
+
+Published in: 'Quantinar'
+
+Description: 'Generate random sample – Observations & Hidden states of dice (with Faif and Loaded dice used interchangeably), sample size is set as N'
+
+Submitted:  '18 Oct 2022'
+
+Keywords: 
+- 'Minimum Spaning Tree'
+- 'Prim algorithm'
+- 'Clustering'
+- 'Time Series'
+- 'Cryptocurrency'
+
+Author: 
+- 'Zijin Wang'
+- 'Wolfgang Karl Härdle'
+- 'Rui Ren'
