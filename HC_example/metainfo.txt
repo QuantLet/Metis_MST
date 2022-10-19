@@ -1,0 +1,16 @@
+Name of Quantlet: 'HC_example'
+
+Published in: 'Quantinar'
+
+Description: 'Give an example using hierarchical clustering to choose number of clusters in minimun spanning tree.'
+
+Submitted:  '18 Oct 2022'
+
+Keywords: 
+- 'Minimum Spaning Tree'
+- 'Hierarchical clustering'
+
+Author: 
+- 'Zijin Wang'
+- 'Wolfgang Karl Härdle'
+- 'Rui Ren'
