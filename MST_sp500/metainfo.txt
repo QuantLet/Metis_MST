@@ -1,0 +1,16 @@
+Name of Quantlet: 'MST_sp500'
+
+Published in: 'Quantinar'
+
+Description: 'Give an example of minimum spanning tree, using S&P 500 index for clustering.'
+
+Submitted:  '18 Oct 2022'
+
+Keywords: 
+- 'Minimum Spaning Tree'
+- 'S&P 500 index'
+
+Author: 
+- 'Zijin Wang'
+- 'Wolfgang Karl Härdle'
+- 'Rui Ren'
