@@ -1,6 +1,6 @@
-Name of Quantlet: 'Minimum Spanning Tree'
+Name of Quantlet: 'Metis_MST'
 
-Published in: 'Quantinar'
+Published in: 'Minimum Spanning Tree'
 
 Description: 'Introduce MST, MST algorithms and applications. Give two examples of time series clustering and cryptocurrency portfolio.'
 
