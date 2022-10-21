@@ -13,5 +13,3 @@ Keywords:
 
 Author: 
 - 'Zijin Wang'
-- 'Wolfgang Karl Härdle'
-- 'Rui Ren'
