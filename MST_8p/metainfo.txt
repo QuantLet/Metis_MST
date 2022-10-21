@@ -25,5 +25,3 @@ Output:
 
 Author: 
 - 'Zijin Wang'
-- 'Wolfgang Karl Härdle'
-- 'Rui Ren'
