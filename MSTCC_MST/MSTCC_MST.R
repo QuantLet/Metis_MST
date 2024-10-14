@@ -16,9 +16,10 @@ library(fPortfolio)
 library(IntroCompFinR)  #install.packages("IntroCompFinR", repos="http://R-Forge.R-project.org")
 require(quadprog)
 library(pracma)
-library(glasso)
+library(glasso)# Load Functions and other Files
+source('./PackagesNetworkPortfolio.R')
 
-setwd("~/Documents/METIS/Minimum Spanning Tree/Codes/MSTCC_MST")
+setwd("~/Documents/Code/Metis_Minimum Spanning Tree/MSTCC_MST/update_20241014")
 prices<-read.table("def.csv", header=TRUE, sep=",", dec=".")
 ZOO <- zoo(prices[,-1], order.by=as.Date(as.character(prices$Date), format='%m/%d/%Y'))
 
@@ -156,15 +157,147 @@ for(t in  1: length(W)){
   b<-subset(de,de>wei)
   res[[t]]<-sum(b^-1)/sum(a^-1)
 }
-
+# animation of efficient frontier
+fig = image_graph(width = 800, height = 640, res = 150, bg = "transparent")
 ## plot MST of each window
 for (t in 1 : length(mst)){
   verticesdegreeall<-degree(mst[[t]])
-  node.size<-as.matrix(verticesdegreeall)*6
-  png(paste("MSTCC_MST_",t,".png",sep = ""), width=500, height=400, bg = "transparent")
-  plot(mst[[t]], edge.color= "black", vertex.size= node.size, vertex.color="orange", layout=layout_with_graphopt)
-  dev.off()
+  node.size<-as.matrix(verticesdegreeall)*4
+  
+  # Find the vertex with the largest degree
+  max_deg_node <- which.max(verticesdegreeall)
+  
+  # Get the layout using layout_with_fr and set the max degree node at the center
+  layout <- layout_components(mst[[t]])
+  
+  centered_layout <- sweep(layout, 2, layout[max_deg_node, ], FUN = "-")
+  
+  # Get the current range of x and y coordinates
+  x_range <- range(centered_layout[, 1])
+  y_range <- range(centered_layout[, 2])
+  
+  # Define the desired range
+  desired_range <- c(-5, 5)
+  
+  # Scale the coordinates to the desired range
+  centered_layout[(centered_layout[, 1])>0, 1] <- centered_layout[(centered_layout[, 1])>0, 1] / x_range[2] * desired_range[2]
+  centered_layout[(centered_layout[, 1])<0, 1] <- centered_layout[(centered_layout[, 1])<0, 1] / x_range[1] * desired_range[1]
+  centered_layout[(centered_layout[, 2])>0, 2] <- centered_layout[(centered_layout[, 2])>0, 2] / y_range[2] * desired_range[2]
+  centered_layout[(centered_layout[, 2])<0, 2] <- centered_layout[(centered_layout[, 2])<0, 2] / y_range[1] * desired_range[1]
+  
+  print(range(centered_layout[, 1]))
+  print(range(centered_layout[, 2]))
+  
+  
+  #png(paste("MSTCC_MST_",t,".png",sep = ""), width=500, height=400, bg = "transparent")
+  set.seed(123)
+  d1=index(W_in[[t]])[1]
+  d2=index(W_in[[t]])[dim(W_in[[t]])[1]]
+  plot(mst[[t]], edge.color= "black", vertex.size= node.size, vertex.color="orange",
+       vertex.label.dist=1.5,layout=centered_layout)
+  # Add title at the bottom using mtext()
+  mtext(
+    text = paste(d1, "to", d2), 
+    side = 1,                # 1 = bottom
+    line = 1,                # Distance from the plot
+    cex = 1.2,               # Text size
+    col = "black",            # Text color
+    font = 2                 # Text style (2 = bold)
+  )
 } 
+dev.off()
+animation <- image_animate(fig, fps = 5)
+image_write(animation, paste0(getwd(), "/MSTCC_MST_movie.gif"))
+
+# # Function to plot MST with the largest node at the center
+# plot_mst_center <- function(mst, file_name) {
+#   # Calculate the degree of each vertex
+#   verticesdegreeall <- degree(mst)
+# 
+#   # Find the vertex with the largest degree
+#   max_deg_node <- which.max(verticesdegreeall)
+# 
+#   # Get the layout using layout_with_fr and set the max degree node at the center
+#   layout <- layout_with_fr(mst)
+# 
+#   # Adjust the layout to center the max degree node
+#   layout <- layout - layout[max_deg_node, ]
+# 
+#   # Scale the node sizes based on their degree
+#   node.size <- verticesdegreeall * 6
+# 
+#   # Plot and save the MST
+#   png(file_name, width = 500, height = 400, bg = "transparent")
+#   plot(mst,
+#        edge.color = "black",
+#        vertex.size = node.size,
+#        vertex.color = "orange",
+#        layout = layout,
+#        main = "MST with Central Node")
+#   dev.off()
+# }
+# 
+# for (t in 1:length(mst)) {
+#   file_name <- paste("MSTCC_MST_centered_", t, ".png", sep = "")
+#   plot_mst_center(mst[[t]], file_name)
+# }
+# 
+# #########
+# 
+# # Function to generate a custom layout with the central node
+# custom_layout <- function(graph) {
+#   # Calculate the degree of each vertex
+#   degrees <- degree(graph)
+# 
+#   # Find the vertex with the highest degree
+#   max_deg_node <- which.max(degrees)
+# 
+#   # Generate a basic layout
+#   layout <- layout_with_fr(graph)
+# 
+#   # Center the max degree node
+#   layout <- layout - layout[max_deg_node, ]
+# 
+#   # Optional: further spread out other nodes
+#   layout <- layout * 1.5
+# 
+#   # Ensure the max degree node is at the center
+#   layout[max_deg_node, ] <- c(0, 0)
+# 
+#   return(layout)
+# }
+# 
+# # Function to plot MST with the custom layout
+# plot_mst_custom_center <- function(mst, file_name) {
+#   # Calculate the degree of each vertex
+#   verticesdegreeall <- degree(mst)
+# 
+#   # Generate the custom layout
+#   layout <- custom_layout(mst)
+# 
+#   # Scale the node sizes based on their degree
+#   node.size <- verticesdegreeall * 6
+# 
+#   # Plot and save the MST
+#   png(file_name, width = 500, height = 400, bg = "transparent")
+#   plot(mst,
+#        edge.color = "black",
+#        vertex.size = node.size,
+#        vertex.color = "orange",
+#        layout = layout,
+#        main = "MST with Central Node")
+#   dev.off()
+# }
+# 
+# # Plot MST for each window with the custom layout
+# for (t in 1:length(mst)) {
+#   file_name <- paste("MSTCC_MST_custom_centered_", t, ".png", sep = "")
+#   plot_mst_custom_center(mst[[t]], file_name)
+# }
+
+
+
+
 ## plot MST of the whole sample time from Sep14, 2017 to Oct 17, 2019
 network_whole=graph_from_adjacency_matrix(Dist_whole,weighted=T,
                                           mode="undirected", diag=F)  # network of filtered correlation matrix
@@ -176,56 +309,15 @@ links2_whole<-as.data.frame(A)                                # links of network
 colnames(links2_whole)<-c("from","to","weight")
 net_whole<- graph_from_data_frame(d=links2_whole, directed=F) # net of whole data
 mst_whole<- minimum.spanning.tree(net_whole)                  # minimum spanning tree
-E(mst_whole)$weight<-as.character(1/as.numeric(E(mst_whole)$weight))
 verticesdegreeall<-degree(mst_whole)
-node.size<-as.matrix(verticesdegreeall)*6
+node.size<-as.matrix(verticesdegreeall)*4
 png("MSTCC_MST_whole.png", width=500, height=400, bg = "transparent")
-plot(mst_whole, edge.color= "black", vertex.size= node.size, vertex.color="orange", layout=layout_with_graphopt)
-dev.off()
-E(mst_whole)$weight
-E(mst_whole)
-V(mst_whole)
-V(mst_whole)$location
-# distance matrix from Sep14, 2017 to Oct 17, 2019
-network_whole=graph_from_adjacency_matrix(Dist_whole,weighted=T,
-                                          mode="undirected", diag=F)  # network of filtered correlation matrix
-Edgelist_whole<-get.edgelist(network_whole)                           # edges of network
-weight_whole<-E(network_whole)$weight                                 # weight of network
-A<-cbind(Edgelist_whole,weight_whole)
-A<-as.matrix(A)
-links2_whole<-as.data.frame(A)                                # links of network
-colnames(links2_whole)<-c("from","to","weight")
-net_whole<- graph_from_data_frame(d=links2_whole, directed=F) # net of whole data
-mst_whole<- minimum.spanning.tree(net_whole)                  # minimum spanning tree
-#E(mst_whole)$weight<-as.character(1/as.numeric(as.character(E(mst_whole)$weight)))
-verticesdegreeall<-degree(mst_whole)
-node.size<-as.matrix(verticesdegreeall)*6
-png("MSTCC_MST_whole1.png", width=500, height=400, bg = "transparent")
 set.seed(123)
-plot(mst_whole, edge.color= "black", vertex.size= node.size, vertex.color="orange",layout=layout_with_lgl)
+plot(mst_whole, edge.color= "black", vertex.size= node.size, vertex.color="orange",
+     vertex.label.dist=1.5,layout=layout_components)          # layout is very important
 #layout=layout_components
 #layout=layout_with_kk
 #layout=layout_with_lgl
 dev.off()
 E(mst_whole)$weight
 E(mst_whole)
-
-
-
-Dist_whole_n<-1/Dist_whole
-network_whole=graph_from_adjacency_matrix(Dist_whole_n,weighted=T,
-                                          mode="undirected", diag=F)  # network of filtered correlation matrix
-Edgelist_whole<-get.edgelist(network_whole)                           # edges of network
-weight_whole<-E(network_whole)$weight                                 # weight of network
-A<-cbind(Edgelist_whole,weight_whole)
-A<-as.matrix(A)
-links2_whole<-as.data.frame(A)                                # links of network
-colnames(links2_whole)<-c("from","to","weight")
-net_whole<- graph_from_data_frame(d=links2_whole, directed=F) # net of whole data
-mst_whole<- minimum.spanning.tree(net_whole)                  # minimum spanning tree
-E(mst_whole)$weight<-as.character(1/as.numeric(E(mst_whole)$weight))
-verticesdegreeall<-degree(mst_whole)
-node.size<-as.matrix(verticesdegreeall)*6
-png("MSTCC_MST_whole2.png", width=500, height=400, bg = "transparent")
-plot(mst_whole, edge.color= "black", vertex.size= node.size, vertex.color="orange", layout=layout_with_graphopt)
-dev.off()

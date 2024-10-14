@@ -1,0 +1,9 @@
+Name of QuantLet : 'MST_clustering_example'
+
+Published in : 'Metis/MST' 
+
+Description : 'This code creates images for clustering by MST that cuts the edges with longest length.'
+
+Keywords : 'Graph theory, clustering, Minimum spanning tree, box plot, distance'
+
+Author : 'Zijin Wang'
