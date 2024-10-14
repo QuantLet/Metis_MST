@@ -4,13 +4,13 @@
 
 ```yaml
 
-Name of QuantLet : 'MST_clustering_example'
+Name of QuantLet : 'MSTCC_MST'
 
-Published in : 'Metis/MST' 
+Published in : 'Metis_MST' 
 
-Description : 'This code creates images for clustering by MST that cuts the edges with longest length.'
+Description : 'This code creates images for networks of 10 cryptocurrencies. The vertice size stands for the degree centrality.'
 
-Keywords : 'Graph theory, clustering, Minimum spanning tree, box plot, distance'
+Keywords : 'Network, crypto, degree centrality, Minimum spanning tree, box plot'
 
 Author : 'Zijin Wang'
 ```
