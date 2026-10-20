@@ -14,12 +14,12 @@ Description: Compare hierarchical clustering and clustering by minimum spanning 
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Hierarchical clustering
-- 'S&P 500 index
+- Minimum Spaning Tree
+- Hierarchical clustering
+- S&P 500 index
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
