@@ -14,12 +14,12 @@ Description: Give an example of using hierarchical clustering to illustrate how 
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Hierarchical clustering
-- 'S&P 500 index
+- Minimum Spaning Tree
+- Hierarchical clustering
+- S&P 500 index
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
