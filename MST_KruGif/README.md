@@ -14,11 +14,11 @@ Description: Give an example of Kurskal Algorithm.
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Kruskal Algorithm
+- Minimum Spaning Tree
+- Kruskal Algorithm
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
