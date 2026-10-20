@@ -14,11 +14,11 @@ Description: Give an example of minimum spanning tree, using S&P 500 index for c
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'S&P 500 index
+- Minimum Spaning Tree
+- S&P 500 index
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
