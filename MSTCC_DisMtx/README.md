@@ -14,12 +14,12 @@ Description: Give distance matrix for minimum spanning tree using 10 cryptocurre
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Distance matrix
-- 'Cryptocurrency
+- Minimum Spaning Tree
+- Distance matrix
+- Cryptocurrency
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
