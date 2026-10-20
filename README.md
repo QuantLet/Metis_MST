@@ -14,13 +14,13 @@ Description: Introduce MST, MST algorithms and applications. Give two examples o
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Prim algorithm
-- 'Clustering
-- 'Time Series
-- 'Cryptocurrency
+- Minimum Spaning Tree
+- Prim algorithm
+- Clustering
+- Time Series
+- Cryptocurrency
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
