@@ -14,11 +14,11 @@ Description: Compare the weights of different portfolios using different paramet
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Portfolio weights
+- Minimum Spaning Tree
+- Portfolio weights
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
