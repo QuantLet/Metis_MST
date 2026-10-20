@@ -14,11 +14,11 @@ Description: Give an example of using minimum spanning tree for clustering. Divi
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Clustering
+- Minimum Spaning Tree
+- Clustering
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
