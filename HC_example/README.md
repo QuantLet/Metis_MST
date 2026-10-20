@@ -14,11 +14,11 @@ Description: Give an example using hierarchical clustering to choose number of c
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Hierarchical clustering
+- Minimum Spaning Tree
+- Hierarchical clustering
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
