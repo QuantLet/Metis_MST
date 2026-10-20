@@ -14,11 +14,11 @@ Description: Show cryptocurency price using in the dataset.
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Cryptocurrency
+- Minimum Spaning Tree
+- Cryptocurrency
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
