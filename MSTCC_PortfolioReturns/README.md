@@ -14,11 +14,11 @@ Description: Show the portfolio performance, one of which is constructed by mini
 Submitted: 18 Oct 2022
 
 Keywords: 
-- 'Minimum Spaning Tree
-- 'Portfolio construction
+- Minimum Spaning Tree
+- Portfolio construction
 
 Author: 
-- 'Zijin Wang
+- Zijin Wang
 
 ```
 <div align="center">
